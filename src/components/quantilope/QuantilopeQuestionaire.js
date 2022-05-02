@@ -1,9 +1,6 @@
-import { Alert } from "bootstrap";
 import React, { useState, useEffect } from "react";
-import { EditText, EditTextarea } from "react-edit-text";
+import { EditText } from "react-edit-text";
 import "react-edit-text/dist/index.css";
-//import IconButton from "@mui/material/IconButton";
-//import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import { IconButton, AddButton } from "../common/IconButton";
 import { Row } from "../common/Row";
 import DataService from "../../service";
@@ -11,14 +8,20 @@ import DataService from "../../service";
 function QuantilopeQuestionaire() {
   const [NewRow, setNewRow] = useState([1, 2, 3]);
   const [NewColumn, setNewColumn] = useState([1, 2, 3]);
+
   const addNewRow = () => {
     const newRowIndex = NewRow.length + 1;
     setNewRow([...NewRow, newRowIndex]);
   };
+
   const addNewColumn = () => {
     const newColumnIndex = NewColumn.length + 1;
     setNewColumn([...NewColumn, newColumnIndex]);
-    const res = DataService.create({ rows: NewRow.length, columns: NewColumn });
+    const res = DataService.create({
+      id: 1,
+      imgURL: "image",
+      colName: "test",
+    });
     return Promise.resolve(res.data);
   };
 
@@ -33,8 +36,8 @@ function QuantilopeQuestionaire() {
     <div>
       <h2>Question Edition View</h2>
       <p>
-        This app uses React, Redux, React Router, and many other helpful
-        libraries.
+        This app uses React, React Router, Nodejs, MOngodb and many other
+        helpful libraries.
       </p>
 
       <div>

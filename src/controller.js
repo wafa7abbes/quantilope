@@ -3,7 +3,7 @@ const Tutorial = db.tutorials;
 
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
-  console.log("<kjhascvdklcjhsbvdclx>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", req);
+  console.log("I am the controller", req);
   // Validate request
   if (!req.body.title) {
     res.status(400).send({ message: "Content can not be empty!" });
@@ -12,8 +12,9 @@ exports.create = (req, res) => {
 
   // Create a Tutorial
   const tutorial = new Tutorial({
-    rows: req.body.rows,
-    columns: req.body.columns,
+    id: req.body.id,
+    imgURL: req.body.imgURL,
+    colName: req.body.colName,
   });
 
   // Save Tutorial in the database

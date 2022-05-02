@@ -1,20 +1,19 @@
-const { string } = require("prop-types");
-
 module.exports = (mongoose) => {
-  var schema = mongoose.Schema(
+  var ColumnSchema = mongoose.Schema(
     {
-      rows: string,
-      columns: string,
+      id: Number,
+      imgURL: String,
+      colName: String,
     },
     { timestamps: true }
   );
 
-  schema.method("toJSON", function () {
+  ColumnSchema.method("toJSON", function () {
     const { __v, _id, ...object } = this.toObject();
     object.id = _id;
     return object;
   });
 
-  const Tutorial = mongoose.model("tutorial", schema);
+  const Tutorial = mongoose.model("tutorial", ColumnSchema);
   return Tutorial;
 };
